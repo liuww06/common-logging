@@ -50,6 +50,9 @@ src/Common.Logging.Log4Net1211/Common.Logging.Log4Net1211.xml
 src/Common.Logging.Log4Net1212/Common.Logging.Log4Net1212.xml
 src/Common.Logging.Log4Net1213/Common.Logging.Log4Net1213.xml
 src/Common.Logging.Log4Net1215/Common.Logging.Log4Net1215.xml
+src/Common.Logging.Log4Net206/Common.Logging.Log4Net206.xml
+src/Common.Logging.Log4Net207/Common.Logging.Log4Net207.xml
+src/Common.Logging.Log4Net208/Common.Logging.Log4Net208.xml
 src/Common.Logging.NLog10/Common.Logging.NLog10.xml
 src/Common.Logging.NLog20/Common.Logging.NLog20.xml
 src/Common.Logging.NLog21/Common.Logging.NLog21.xml
@@ -58,8 +61,12 @@ src/Common.Logging.NLog31/Common.Logging.NLog31.xml
 src/Common.Logging.NLog32/Common.Logging.NLog32.xml
 src/Common.Logging.NLog40/Common.Logging.NLog40.xml
 src/Common.Logging.NLog41/Common.Logging.NLog41.xml
+src/Common.Logging.NLog443/Common.Logging.NLog443.xml
+src/Common.Logging.NLog444/Common.Logging.NLog444.xml
+src/Common.Logging.NLog4411/Common.Logging.NLog4411.xml
 src/Common.Logging/Common.Logging.xml
 src/Common.Logging.Portable/Common.Logging.Portable.xml
 src/Common.Logging.Core/Common.Logging.Core.xml
 src/Common.Logging.MultipleLogger/Common.Logging.MultipleLogger.xml
 src/Common.Logging.ApplicationInsights0170/Common.Logging.ApplicationInsights0170.xml
+src/Common.Logging.Serilog1514/Common.Logging.Serilog1514.xml

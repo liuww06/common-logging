@@ -1,18 +1,26 @@
-﻿{
-  "version": "3.3.0-*",
-  "description": "Common.Logging.Core.DotNetCore",
-  "compilationOptions": {
-    "define": [ "PORTABLE", "DOTNETCORE" ]
+{
+  "version": "3.4.0-*",
+  "buildOptions": {
+    "define": [ "PORTABLE", "DOTNETCORE" ],
+    "compile": {
+      "include": [ "../Common.Logging.Core/**/*.cs", "../CommonAssemblyInfo.cs" ]
+    },
+    "debugType": "portable",
+    "xmlDoc": true,
+    "outputName": "Common.Logging.Core"
+  },
+  "configurations": {
+    "Release": {
+      "buildOptions": {
+        "keyFile": "../../Common.Net.snk"
+      }
+    }
   },
   "frameworks": {
-    "dotnet": { }
-  },
-  "compile": [ "../Common.Logging.Core/**/*.cs", "../CommonAssemblyInfo.cs" ],
-  "dependencies": {
-    "Microsoft.CSharp": "4.0.0",
-    "System.Collections": "4.0.10",
-    "System.Linq": "4.0.0",
-    "System.Runtime": "4.0.20",
-    "System.Threading": "4.0.10"
+    "netstandard1.0": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1"
+      }
+    }
   }
 }

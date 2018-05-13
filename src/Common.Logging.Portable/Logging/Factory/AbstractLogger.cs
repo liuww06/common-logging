@@ -19,6 +19,7 @@
 #endregion
 
 using System;
+using Common.Logging.Simple;
 using FormatMessageCallback = System.Action<Common.Logging.FormatMessageHandler>;
 
 namespace Common.Logging.Factory
@@ -37,12 +38,33 @@ namespace Common.Logging.Factory
         /// <summary>
         /// Format message on demand.
         /// </summary>
+        [CLSCompliant(false)]
         protected class FormatMessageCallbackFormattedMessage
         {
-            private volatile string cachedMessage;
+            /// <summary>
+            /// The cached message
+            /// </summary>
+            protected volatile string cachedMessage;
+            
+            /// <summary>
+            /// The format provider
+            /// </summary>
+            protected readonly IFormatProvider formatProvider;
+            
+            /// <summary>
+            /// The format message callback
+            /// </summary>
+            protected readonly FormatMessageCallback formatMessageCallback;
 
-            private readonly IFormatProvider formatProvider;
-            private readonly FormatMessageCallback formatMessageCallback;
+            /// <summary>
+            /// The cached format
+            /// </summary>
+            protected volatile string cachedFormat;
+            
+            /// <summary>
+            /// The cached arguments
+            /// </summary>
+            protected volatile object[] cachedArguments;
 
             /// <summary>
             /// Initializes a new instance of the <see cref="FormatMessageCallbackFormattedMessage"/> class.
@@ -77,10 +99,27 @@ namespace Common.Logging.Factory
                 return cachedMessage;
             }
 
+            /// <summary>
+            /// Formats the message.
+            /// </summary>
+            /// <param name="format">The format.</param>
+            /// <param name="args">The arguments.</param>
+            /// <returns>System.String.</returns>
             [StringFormatMethod("format")]
-            private string FormatMessage(string format, params object[] args)
+            protected string FormatMessage(string format, params object[] args)
             {
-                cachedMessage = string.Format(formatProvider, format, args);
+                if (args.Length > 0 && formatProvider != null)
+                    cachedMessage = string.Format(formatProvider, format, args);
+                else if (args.Length > 0)
+                    cachedMessage = string.Format(format, args);
+                else if (formatProvider != null)
+                    cachedMessage = string.Format(formatProvider, format);
+                else
+                    cachedMessage = format;
+
+                cachedFormat = format;
+                cachedArguments = args;
+
                 return cachedMessage;
             }
         }
@@ -1072,6 +1111,15 @@ namespace Common.Logging.Factory
         public virtual IVariablesContext ThreadVariablesContext
         {
             get { return new Simple.NoOpVariablesContext(); }
+        }
+
+
+        /// <summary>
+        /// Returns the thread-specific context for nested variables (for NDC, eg.)
+        /// </summary>
+        public virtual INestedVariablesContext NestedThreadVariablesContext
+        {
+            get { return new NoOpNestedVariablesContext(); }
         }
     }
 }

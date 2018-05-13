@@ -40,13 +40,15 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\lib\net\2.0\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\lib\net\2.0\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logging\ETWLogger\BasicIntegrationTestHarness.cs" />
+    <Compile Include="Logging\ETWLogger\ETWLoggerFactoryAdapterEventSourceRegistrationTests.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSourceForConfigFile.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSource5.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSource4.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSource3.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSource2.cs" />
+    <Compile Include="Logging\ETWLogger\TestEventSource1.cs" />
+    <Compile Include="Logging\ETWLogger\DuplicateRegisteredEventSource.cs" />
     <Compile Include="Logging\ETWLogger\ETWLoggerFactoryAdapterConfigurationTests.cs" />
+    <Compile Include="Logging\ETWLogger\ETWLoggerFactoryAdapterTests.cs" />
     <Compile Include="Logging\ETWLogger\ETWLoggerTests.cs" />
-    <Compile Include="Logging\ETWLogger\MyCustomEventSource.cs" />
+    <Compile Include="Logging\ETWLogger\CustomTestEventSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Common.Logging.Core\Common.Logging.Core.2010.csproj">
